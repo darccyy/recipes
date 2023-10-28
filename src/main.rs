@@ -1,7 +1,7 @@
 use ibex::prelude::*;
 use ibex::{routes, ssg};
 
-const URL_ROOT: &str = "/ibex-template/";
+const URL_ROOT: &str = "/recipes/";
 
 fn main() {
     let routes = routes! [
@@ -16,24 +16,6 @@ fn main() {
 fn at_index() -> Document {
     view! {
         @use_base[]
-
-        center {
-            h1 { "My Ibex App" }
-            p {
-                "This app was made using"
-                ~ a [href="https://github.com/darccyy/ibex-template"] {
-                    "Ibex Template"
-                }
-            }
-            p { a [href=url!("not/a/real/path")] { "404 Example" }
-            }
-            br/
-            img [
-                alt="Ibex logo",
-                src=url!("static/icon.png"),
-                width=300,
-            ]/
-        }
     }
     .into()
 }
@@ -53,9 +35,13 @@ fn use_base() -> View {
     view! {
         HEAD {
             @use_meta [Meta::new()]
-            title { "My Ibex App" }
+            title { "Recipe Website" }
             link [rel="shortcut icon", href=url!("static/icon.png")]/
             link [rel="stylesheet", href=url!("css/base.css")]/
+        }
+
+        center {
+            h1 { "Recipe Website" }
         }
     }
 }
